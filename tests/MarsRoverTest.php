@@ -47,8 +47,14 @@ class MarsRoverTest extends TestCase
     }
 
     /** @test */
-    public function given_a_2_R_command_then_rovers_should_be_in_0_0_E_position(): void
+    public function given_a_2_R_command_then_rovers_should_be_in_0_0_S_position(): void
     {
         self::assertEquals("0:0:S", $this->marsRover->execute("RR"));
+    }
+
+    /** @test */
+    public function given_a_3_R_command_then_rovers_should_be_in_0_0_W_position(): void
+    {
+        self::assertEquals("0:0:W", $this->marsRover->execute("RRR"));
     }
 }
