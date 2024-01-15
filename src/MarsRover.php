@@ -12,6 +12,7 @@ class MarsRover
 
         if ($string === 'R')  return $this->coordinate_x . ":" . $this->coordinate_y . ":" . "E";
         if ($string === 'RR')  return $this->coordinate_x . ":" . $this->coordinate_y . ":" . "S";
+        if ($string === 'RRR')  return $this->coordinate_x . ":" . $this->coordinate_y . ":" . "W";
 
         if (strlen($string) >= 10) return $this->coordinate_x . ":" . $this->coordinate_y . ":" . "N";
 
