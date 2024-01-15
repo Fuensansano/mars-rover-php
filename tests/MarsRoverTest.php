@@ -15,6 +15,6 @@ class MarsRoverTest extends TestCase
 
         $marsRover->execute("M");
 
-        assertEquals($marsRover->execute("M"), "0:1:N");
+        self::assertEquals($marsRover->execute("M"), "0:1:N");
     }
 }
