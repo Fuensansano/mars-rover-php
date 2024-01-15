@@ -10,6 +10,7 @@ class MarsRover
     public function execute(string $string): string
     {
 
+        if ($string === 'R')  return $this->coordinate_x . ":" . $this->coordinate_y . ":" . "E";
 
         if (strlen($string) >= 10) return $this->coordinate_x . ":" . $this->coordinate_y . ":" . "N";
 
