@@ -19,13 +19,6 @@ class MarsRover
 
         if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $orientation[strlen($string)];
 
-        if (strlen($string) >= $this->limitBoard) {
-            return $this->coordinateX . ":" . (strlen($string) % $this->limitBoard) . ":" . "N";
-        } else {
-            for ($i = 0; $i < strlen($string); $i++) {
-                $this->coordinateY++;
-            }
-            return $this->coordinateX . ":" . $this->coordinateY . ":" . "N";
-        }
+        return $this->coordinateX . ":" . (strlen($string) % $this->limitBoard) . ":" . "N";
     }
 }
