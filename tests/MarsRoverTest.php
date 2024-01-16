@@ -28,6 +28,7 @@ class MarsRoverTest extends TestCase
             'given_a_1_R_command_then_rovers_should_be_in_0_0_E_position' =>  ["R","0:0:E"],
             'given_a_2_R_command_then_rovers_should_be_in_0_0_S_position' =>  ["RR","0:0:S"],
             'given_a_3_R_command_then_rovers_should_be_in_0_0_W_position' =>  ["RRR","0:0:W"],
+            'given_a_4_R_command_then_rovers_should_be_in_0_0_W_position' =>  ["RRRR","0:0:N"],
         ];
     }
 
