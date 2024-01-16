@@ -15,23 +15,37 @@ class MarsRoverTest extends TestCase
         $this->marsRover = new MarsRover();
     }
 
-
-    /** @test */
-    public function given_a_M_command_then_rovers_should_be_in_0_1_N_position(): void
-    {
-        self::assertEquals("0:1:N", $this->marsRover->execute("M"));
+    public function commandM() {
+        return [
+            'given_a_M_command_then_rovers_should_be_in_0_1_N_position' =>  ["M","0:1:N"],
+            'given_a_2_M_command_then_rovers_should_be_in_0_2_N_position' => ["MM","0:2:N"],
+            'given_a_10_M_command_then_rovers_should_be_in_0_0_N_position' => ["MMMMMMMMMM","0:0:N"],
+        ];
     }
 
-    /** @test */
-    public function given_a_MM_command_then_rovers_should_be_in_0_1_N_position(): void
-    {
-        self::assertEquals("0:2:N", $this->marsRover->execute("MM"));
+    public function commandR() {
+        return [
+            'given_a_1_R_command_then_rovers_should_be_in_0_0_E_position' =>  ["R","0:0:E"],
+            'given_a_2_R_command_then_rovers_should_be_in_0_0_S_position' =>  ["RR","0:0:S"],
+            'given_a_3_R_command_then_rovers_should_be_in_0_0_W_position' =>  ["RRR","0:0:W"],
+        ];
     }
 
-    /** @test */
-    public function given_a_10_M_command_then_rovers_should_be_in_0_0_N_position(): void
+
+    /** @test
+     * @dataProvider commandM
+     */
+    public function M_command($command, $finalPosition): void
     {
-        self::assertEquals("0:0:N", $this->marsRover->execute("MMMMMMMMMM"));
+        self::assertEquals($finalPosition, $this->marsRover->execute($command));
+    }
+
+    /** @test
+     * @dataProvider commandR
+     */
+    public function R_command($command, $finalPosition): void
+    {
+        self::assertEquals($finalPosition, $this->marsRover->execute($command));
     }
 
     /** @test */
@@ -40,21 +54,4 @@ class MarsRoverTest extends TestCase
         self::assertEquals("0:0:N", $this->marsRover->execute(""));
     }
 
-    /** @test */
-    public function given_a_1_R_command_then_rovers_should_be_in_0_0_E_position(): void
-    {
-        self::assertEquals("0:0:E", $this->marsRover->execute("R"));
-    }
-
-    /** @test */
-    public function given_a_2_R_command_then_rovers_should_be_in_0_0_S_position(): void
-    {
-        self::assertEquals("0:0:S", $this->marsRover->execute("RR"));
-    }
-
-    /** @test */
-    public function given_a_3_R_command_then_rovers_should_be_in_0_0_W_position(): void
-    {
-        self::assertEquals("0:0:W", $this->marsRover->execute("RRR"));
-    }
 }
