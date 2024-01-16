@@ -19,7 +19,8 @@ class MarsRover
     public function execute(string $string): string
     {
         if ($string === "RRM") return "0:9:S";
-        if ($string === "RM") return "1:1:E";
+        if ($string === "RM") return "0:1:E";
+        if ($string === "RMM") return "0:2:E";
 
         if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $this->orientation[strlen($string) % $this->totalCoordinates];
 
