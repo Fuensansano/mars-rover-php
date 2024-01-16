@@ -5,47 +5,46 @@ namespace PhpKataSetup;
 
 class MarsRover
 {
-        public int $coordinateX = 0;
-        public int $coordinateY = 0;
-        public int $limitBoard = 10;
-        public int $totalCoordinates = 4;
+        private int $coordinateX = 0;
+        private int $coordinateY = 0;
+        private int $limitBoard = 10;
+        private int $totalCoordinates = 4;
 
-        public array $orientation =  [
+        private string $rightCommand = "R";
+        private string $moveCommand = "M";
+
+        private array $orientation =  [
         1 => "E",
         2 => "S",
         3 => "W",
         0 => "N",
         ];
-    public function execute(string $string): string
+    public function execute(string $commands): string
     {
 
-
 //        if ($string === "RRM") return "0:9:S";
-//        if ($string === "RM") return "0:1:E";
-//        if ($string === "RMM") return "0:2:E";
 
+        $commandsArray = str_split($commands);
+        $totalR = substr_count($commands,$this->rightCommand);
+        $totalM = substr_count($commands,$this->moveCommand);
+        $index = "";
 
-        $commands = str_split($string);
+        if ($commands === "") return $this->coordinateX . ":" . $this->coordinateY . ":" . $this->orientation[strlen($commands)];
 
-        $index = "N";
-
-        foreach ($commands as $command) {
-            if ($command === "R") {
-                $index = $this->orientation[substr_count($string,'R') % $this->totalCoordinates];
+        foreach ($commandsArray as $aCommand) {
+            if ($aCommand === $this->rightCommand) {
+                $index = $this->orientation[$totalR % $this->totalCoordinates];
             }
-            if ($command === "M" ) {
+            if ($aCommand === $this->moveCommand ) {
                 $this->coordinateY++;
+                $index = $this->orientation[$totalR % $this->limitBoard];
 
-                if (substr_count($string,'M') >= 10) {
-                    $this->coordinateY = (strlen($string) % $this->limitBoard);
+                if ($totalM >= $this->limitBoard) {
+                    $this->coordinateY = ($totalM % $this->limitBoard);
                 }
             }
         }
         return $this->coordinateX . ":" . $this->coordinateY . ":" . $index;
-
-//        if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $this->orientation[strlen($string) % $this->totalCoordinates];
-//
-//        return $this->coordinateX . ":" . (strlen($string) % $this->limitBoard) . ":" . "N";
     }
 }
 
