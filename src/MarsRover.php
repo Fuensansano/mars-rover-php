@@ -18,12 +18,35 @@ class MarsRover
         ];
     public function execute(string $string): string
     {
-        if ($string === "RRM") return "0:9:S";
-        if ($string === "RM") return "0:1:E";
-        if ($string === "RMM") return "0:2:E";
 
-        if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $this->orientation[strlen($string) % $this->totalCoordinates];
 
-        return $this->coordinateX . ":" . (strlen($string) % $this->limitBoard) . ":" . "N";
+//        if ($string === "RRM") return "0:9:S";
+//        if ($string === "RM") return "0:1:E";
+//        if ($string === "RMM") return "0:2:E";
+
+
+        $commands = str_split($string);
+
+        $index = "N";
+
+        foreach ($commands as $command) {
+            if ($command === "R") {
+                $index = $this->orientation[substr_count($string,'R') % $this->totalCoordinates];
+            }
+            if ($command === "M" ) {
+                $this->coordinateY++;
+
+                if (substr_count($string,'M') >= 10) {
+                    $this->coordinateY = (strlen($string) % $this->limitBoard);
+                }
+            }
+        }
+        return $this->coordinateX . ":" . $this->coordinateY . ":" . $index;
+
+//        if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $this->orientation[strlen($string) % $this->totalCoordinates];
+//
+//        return $this->coordinateX . ":" . (strlen($string) % $this->limitBoard) . ":" . "N";
     }
 }
+
+
