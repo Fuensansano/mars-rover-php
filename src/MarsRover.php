@@ -8,16 +8,19 @@ class MarsRover
         public int $coordinateX = 0;
         public int $coordinateY = 0;
         public int $limitBoard = 10;
+        public int $totalCoordinates = 4;
+
+        public array $orientation =  [
+        1 => "E",
+        2 => "S",
+        3 => "W",
+        0 => "N",
+        ];
     public function execute(string $string): string
     {
-        $orientation =  [
-            1 => "E",
-            2 => "S",
-            3 => "W",
-            0 => "N",
-        ];
 
-        if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $orientation[strlen($string) % 4];
+
+        if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $this->orientation[strlen($string) % $this->totalCoordinates];
 
         return $this->coordinateX . ":" . (strlen($string) % $this->limitBoard) . ":" . "N";
     }
