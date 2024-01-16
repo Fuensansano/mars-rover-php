@@ -14,10 +14,10 @@ class MarsRover
             1 => "E",
             2 => "S",
             3 => "W",
-            4 => "N",
+            0 => "N",
         ];
 
-        if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $orientation[strlen($string)];
+        if (substr_count($string, "R"))  return $this->coordinateX . ":" . $this->coordinateY . ":" . $orientation[strlen($string) % 4];
 
         return $this->coordinateX . ":" . (strlen($string) % $this->limitBoard) . ":" . "N";
     }
