@@ -21,6 +21,7 @@ class MarsRoverTest extends TestCase
             'given_a_2_M_command_then_rovers_should_be_in_0_2_N_position' => ["MM","0:2:N"],
             'given_a_10_M_command_then_rovers_should_be_in_0_0_N_position' => ["MMMMMMMMMM","0:0:N"],
             'given_a_11_M_command_then_rovers_should_be_in_0_0_N_position' => ["MMMMMMMMMMM","0:1:N"],
+            'given_a_13_M_command_then_rovers_should_be_in_0_0_N_position' => ["MMMMMMMMMMMMM","0:3:N"],
         ];
     }
 
@@ -31,6 +32,7 @@ class MarsRoverTest extends TestCase
             'given_a_3_R_command_then_rovers_should_be_in_0_0_W_position' =>  ["RRR","0:0:W"],
             'given_a_4_R_command_then_rovers_should_be_in_0_0_N_position' =>  ["RRRR","0:0:N"],
             'given_a_5_R_command_then_rovers_should_be_in_0_0_E_position' =>  ["RRRRR","0:0:E"],
+            'given_a_7_R_command_then_rovers_should_be_in_0_0_E_position' =>  ["RRRRRRR","0:0:W"],
         ];
     }
 
