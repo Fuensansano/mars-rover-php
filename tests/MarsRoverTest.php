@@ -20,6 +20,7 @@ class MarsRoverTest extends TestCase
             'given_a_M_command_then_rovers_should_be_in_0_1_N_position' =>  ["M","0:1:N"],
             'given_a_2_M_command_then_rovers_should_be_in_0_2_N_position' => ["MM","0:2:N"],
             'given_a_10_M_command_then_rovers_should_be_in_0_0_N_position' => ["MMMMMMMMMM","0:0:N"],
+            'given_a_11_M_command_then_rovers_should_be_in_0_0_N_position' => ["MMMMMMMMMMM","0:1:N"],
         ];
     }
 
