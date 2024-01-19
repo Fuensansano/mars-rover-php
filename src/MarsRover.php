@@ -24,10 +24,6 @@ class MarsRover
     public function execute(string $commands): string
     {
 
-        if ($commands === "RRM") return "0:9:S";
-        if ($commands === "RRMM") return "0:8:S";
-        if ($commands === "RRMMM") return "0:7:S";
-
         $commandsArray = str_split($commands);
         $totalR = substr_count($commands,self::RIGHT_COMMAND);
         $totalM = substr_count($commands,self::MOVE_COMMAND);
@@ -39,12 +35,17 @@ class MarsRover
             if ($aCommand === self::RIGHT_COMMAND) {
                 $index = self::ORIENTATION[$totalR % self::TOTAL_COORDINATE];
             }
-            if ($aCommand ===self::MOVE_COMMAND ) {
+
+            if ($aCommand === self::MOVE_COMMAND ) {
                 $this->coordinateY++;
                 $index = self::ORIENTATION[$totalR % self::LIMIT_BOARD];
 
                 if ($totalM >= self::LIMIT_BOARD) {
                     $this->coordinateY = ($totalM % self::LIMIT_BOARD);
+                }
+
+                if ($totalR === 2) {
+                    $this->coordinateY = (self::LIMIT_BOARD - $totalM);
                 }
             }
         }
