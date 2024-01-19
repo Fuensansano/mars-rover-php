@@ -15,7 +15,8 @@ class MarsRoverTest extends TestCase
         $this->marsRover = new MarsRover();
     }
 
-    public function commandM() {
+    public static function commandM(): array
+    {
         return [
             'given_a_M_command_then_rovers_should_be_in_0_1_N_position' =>  ["M","0:1:N"],
             'given_a_2_M_command_then_rovers_should_be_in_0_2_N_position' => ["MM","0:2:N"],
@@ -25,7 +26,8 @@ class MarsRoverTest extends TestCase
         ];
     }
 
-    public function commandR() {
+    public static function commandR(): array
+    {
         return [
             'given_a_1_R_command_then_rovers_should_be_in_0_0_E_position' =>  ["R","0:0:E"],
             'given_a_2_R_command_then_rovers_should_be_in_0_0_S_position' =>  ["RR","0:0:S"],
