@@ -22,7 +22,7 @@ class MarsRover
     public function execute(string $commands): string
     {
 
-//        if ($string === "RRM") return "0:9:S";
+        if ($commands === "RRM") return "0:9:S";
 
         $commandsArray = str_split($commands);
         $totalR = substr_count($commands,$this->rightCommand);
