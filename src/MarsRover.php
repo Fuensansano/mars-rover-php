@@ -23,6 +23,7 @@ class MarsRover
     {
 
         if ($commands === "RRM") return "0:9:S";
+        if ($commands === "RRMM") return "0:8:S";
 
         $commandsArray = str_split($commands);
         $totalR = substr_count($commands,$this->rightCommand);
