@@ -5,20 +5,22 @@ namespace PhpKataSetup;
 
 class MarsRover
 {
-        private int $coordinateX = 0;
-        private int $coordinateY = 0;
-        private int $limitBoard = 10;
-        private int $totalCoordinates = 4;
+    private int $coordinateX  = 0;
+    private int $coordinateY  = 0;
 
-        private string $rightCommand = "R";
-        private string $moveCommand = "M";
+    const LIMIT_BOARD = 10;
+    const TOTAL_COORDINATE = 4;
 
-        private array $orientation =  [
+    const RIGHT_COMMAND = "R";
+    const  MOVE_COMMAND = "M";
+
+    const ORIENTATION =  [
         1 => "E",
         2 => "S",
         3 => "W",
         0 => "N",
         ];
+
     public function execute(string $commands): string
     {
 
@@ -27,22 +29,22 @@ class MarsRover
         if ($commands === "RRMMM") return "0:7:S";
 
         $commandsArray = str_split($commands);
-        $totalR = substr_count($commands,$this->rightCommand);
-        $totalM = substr_count($commands,$this->moveCommand);
+        $totalR = substr_count($commands,self::RIGHT_COMMAND);
+        $totalM = substr_count($commands,self::MOVE_COMMAND);
         $index = "";
 
-        if ($commands === "") return $this->coordinateX . ":" . $this->coordinateY . ":" . $this->orientation[strlen($commands)];
+        if ($commands === "") return $this->coordinateX . ":" . $this->coordinateY . ":" . self::ORIENTATION[strlen($commands)];
 
         foreach ($commandsArray as $aCommand) {
-            if ($aCommand === $this->rightCommand) {
-                $index = $this->orientation[$totalR % $this->totalCoordinates];
+            if ($aCommand === self::RIGHT_COMMAND) {
+                $index = self::ORIENTATION[$totalR % self::TOTAL_COORDINATE];
             }
-            if ($aCommand === $this->moveCommand ) {
+            if ($aCommand ===self::MOVE_COMMAND ) {
                 $this->coordinateY++;
-                $index = $this->orientation[$totalR % $this->limitBoard];
+                $index = self::ORIENTATION[$totalR % self::LIMIT_BOARD];
 
-                if ($totalM >= $this->limitBoard) {
-                    $this->coordinateY = ($totalM % $this->limitBoard);
+                if ($totalM >= self::LIMIT_BOARD) {
+                    $this->coordinateY = ($totalM % self::LIMIT_BOARD);
                 }
             }
         }
